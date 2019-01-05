@@ -1,5 +1,8 @@
 package com.wohnungshelden.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -15,10 +18,12 @@ public class District implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "districts")
     private Set<SearchRequest> searchRequests;
 

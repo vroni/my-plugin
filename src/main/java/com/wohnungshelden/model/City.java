@@ -1,5 +1,7 @@
 package com.wohnungshelden.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -15,6 +17,7 @@ public class City implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "id")
     private Set<District> districts;
 

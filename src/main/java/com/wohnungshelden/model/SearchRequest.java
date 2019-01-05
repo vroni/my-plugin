@@ -1,6 +1,7 @@
 package com.wohnungshelden.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -31,6 +32,7 @@ public class SearchRequest implements Serializable {
     @Column(name = "appartment_rent")
     private Double appartmentRent;
 
+    @JsonManagedReference
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "search_request_district_mapping",
@@ -43,13 +45,13 @@ public class SearchRequest implements Serializable {
     }
 
     @JsonCreator
-    public SearchRequest(@JsonProperty("id") long id,
-                         @JsonProperty("firstName") String firstName,
-                         @JsonProperty("lastName") String lastName,
-                         @JsonProperty("email") String email,
-                         @JsonProperty("appartmentSize") Double appartmentSize,
-                         @JsonProperty("appartmentRent") Double appartmentRent,
-                         @JsonProperty("districts") Set<District> districts) {
+    public SearchRequest(long id,
+                         String firstName,
+                         String lastName,
+                         String email,
+                         Double appartmentSize,
+                         Double appartmentRent,
+                         Set<District> districts) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
