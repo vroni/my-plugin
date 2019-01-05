@@ -1,18 +1,34 @@
 <h1>Search Requests</h1>
 
 <div>
-  <table style="width:100%">
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
+<mat-table [dataSource]="searchRequests" multiTemplateDataRows>
+  <ng-container matColumnDef="firstName" >
+    <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+    <mat-cell *matCellDef="let searchRequest"> {{searchRequest.firstName }} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+    <mat-cell *matCellDef="let searchRequest"> {{searchRequest.lastName }} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef> E-Mail </mat-header-cell>
+    <mat-cell *matCellDef="let searchRequest"> {{searchRequest.email }} </mat-cell>
+  </ng-container>
 
-    </tr>
-    <tr *ngFor="let searchRequest of searchRequests | async">
-      <td> {{ searchRequest.firstName }} </td>
-      <td> {{ searchRequest.lastName }} </td>
-      <td> {{ searchRequest.email }} </td>
-    </tr>
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let searchDetail" [attr.colspan]="columnsToDisplay.length">
+      <div [@detailExpand]="searchDetail == expandedElement ? 'expanded' : 'collapsed'">
+        <div> Appartment size: {{searchDetail.appartmentSize}} </div>
+        <div> Appartment rent: {{searchDetail.appartmentRent}} </div>
+        <div *ngFor="let district of searchDetail.districts">
+          {{district.name}}, {{district.city.name}} </div>
+      </div>
+    </td>
+  </ng-container>
 
-  </table>
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnsToDisplay;"
+           (click)="expandedElement = expandedElement === row ? null : row"></mat-row>
+  <mat-row *matRowDef="let row; columns: ['expandedDetail']"></mat-row>
+</mat-table>
 </div>
