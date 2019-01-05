@@ -2,6 +2,7 @@ package com.wohnungshelden.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "district")
@@ -18,7 +19,10 @@ public class District implements Serializable {
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
-    District() {
+    @ManyToMany(mappedBy = "districts")
+    private Set<SearchRequest> searchRequests;
+
+    protected District() {
     }
 
     public District(Long id, String name, City city) {

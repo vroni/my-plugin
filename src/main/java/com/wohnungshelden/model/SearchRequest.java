@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name="search_request")
@@ -29,6 +30,14 @@ public class SearchRequest implements Serializable {
 
     @Column(name = "appartment_rent")
     private Double appartmentRent;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "search_request_district_mapping",
+            joinColumns = {@JoinColumn(name = "district_id")},
+            inverseJoinColumns   = {@JoinColumn(name = "search_request_id")}
+    )
+    private Set<District> districts;
 
     protected SearchRequest() {
     }
