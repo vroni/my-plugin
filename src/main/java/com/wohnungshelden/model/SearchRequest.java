@@ -48,13 +48,15 @@ public class SearchRequest implements Serializable {
                          @JsonProperty("lastName") String lastName,
                          @JsonProperty("email") String email,
                          @JsonProperty("appartmentSize") Double appartmentSize,
-                         @JsonProperty("appartmentRent") Double appartmentRent) {
+                         @JsonProperty("appartmentRent") Double appartmentRent,
+                         @JsonProperty("districts") Set<District> districts) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.appartmentSize = appartmentSize;
         this.appartmentRent = appartmentRent;
+        this.districts = districts;
     }
 
     public long getId() {
@@ -79,6 +81,10 @@ public class SearchRequest implements Serializable {
 
     public Double getAppartmentRent() {
         return appartmentRent;
+    }
+
+    public Set<District> getDistricts() {
+        return districts;
     }
 
     @Override

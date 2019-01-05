@@ -25,10 +25,11 @@ public class District implements Serializable {
     protected District() {
     }
 
-    public District(Long id, String name, City city) {
+    public District(Long id, String name, City city, Set<SearchRequest> searchRequests) {
         this.id = id;
         this.name = name;
         this.city = city;
+        this.searchRequests = searchRequests;
     }
 
     public Long getId() {
@@ -41,5 +42,9 @@ public class District implements Serializable {
 
     public City getCity() {
         return city;
+    }
+
+    public Set<SearchRequest> getSearchRequests() {
+        return searchRequests;
     }
 }
