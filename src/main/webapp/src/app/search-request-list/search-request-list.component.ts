@@ -22,5 +22,4 @@ export class SearchRequestListComponent implements OnInit {
   reloadData() {
     this.searchRequests = this.searchRequestService.getSearchRequestList();
   }
-
 }
