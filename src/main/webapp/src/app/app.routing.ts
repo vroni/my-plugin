@@ -4,7 +4,7 @@ import { SearchRequestListComponent } from './search-request-list/search-request
 
 const routes : Routes = [
   {
-  path:  'searchrequests',
+  path:  '',
   component:  SearchRequestListComponent
   }
 ];

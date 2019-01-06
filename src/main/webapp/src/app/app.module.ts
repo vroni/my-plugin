@@ -5,7 +5,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { AppService } from './app.service';
 import { SearchRequestListComponent } from './search-request-list/search-request-list.component';
 import { AppRoutingModule } from  './app.routing';
 
@@ -21,7 +20,7 @@ import { AppRoutingModule } from  './app.routing';
     AppRoutingModule,
     MatTableModule
   ],
-  providers: [AppService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
