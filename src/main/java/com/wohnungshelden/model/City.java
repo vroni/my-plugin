@@ -18,7 +18,7 @@ public class City implements Serializable {
     private String name;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "city")
     private Set<District> districts;
 
     protected City() {}
