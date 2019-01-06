@@ -37,8 +37,8 @@ public class SearchRequest implements Serializable {
     @ManyToMany
     @JoinTable(
             name = "search_request_district_mapping",
-            joinColumns = {@JoinColumn(name = "district_id")},
-            inverseJoinColumns   = {@JoinColumn(name = "search_request_id")}
+            joinColumns = {@JoinColumn(name = "search_request_id")},
+            inverseJoinColumns   = {@JoinColumn(name = "district_id")}
     )
     private Set<District> districts = new HashSet<>();
 

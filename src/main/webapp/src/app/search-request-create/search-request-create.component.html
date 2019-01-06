@@ -1,35 +1,36 @@
+<div>
+<mat-form-field>
+  <input matInput #firstName placeholder="Fist Name">
+</mat-form-field>
+</div>
+<div>
+<mat-form-field>
+  <input matInput #lastName placeholder="Last Name">
+</mat-form-field>
+</div>
+<div>
+<mat-form-field>
+  <input matInput #email placeholder="eMail">
+</mat-form-field>
+</div>
+<div>
+<mat-form-field>
+  <input matInput #appartmentSize placeholder="Appartment Size">
+</mat-form-field>
+</div>
+<div>
+<mat-form-field>
+  <input matInput #appartmentRent placeholder="Appartment Rent">
+</mat-form-field>
+</div>
 
 <div>
-  <label>First Name
-    <input #firstName />
-  </label>
-</div>
-<div>
-  <label>Last Name
-    <input #lastName />
-  </label>
-</div>
-<div>
-  <label>E-Mail
-    <input #email />
-  </label>
-</div>
-<div>
-  <label>Appartment Size
-    <input #appartmentSize />
-  </label>
-</div>
-<div>
-  <label>Appartment Rent
-    <input #appartmentRent />
-  </label>
-</div>
-
 <mat-form-field>
   <mat-select placeholder="Districts" [formControl]="districts" multiple>
     <mat-option *ngFor="let district of districtsList | async" [value]="district">{{district.name}}, {{district.city.name}}</mat-option>
   </mat-select>
 </mat-form-field>
+</div>
 
 <div>
   <!-- (click) passes input value to add() and then clears the input -->
