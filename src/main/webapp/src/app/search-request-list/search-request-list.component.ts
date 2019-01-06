@@ -32,9 +32,4 @@ export class SearchRequestListComponent implements OnInit {
   reloadData() {
     this.searchRequests = this.searchRequestService.getSearchRequestList();
   }
-
-  selectRow(row) {
-    console.log(row) ;
-    // alert ('Aircraft selected') ;
-  }
 }

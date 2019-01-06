@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -33,26 +34,24 @@ public class SearchRequest implements Serializable {
     private Double appartmentRent;
 
     @JsonManagedReference
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany
     @JoinTable(
             name = "search_request_district_mapping",
             joinColumns = {@JoinColumn(name = "district_id")},
             inverseJoinColumns   = {@JoinColumn(name = "search_request_id")}
     )
-    private Set<District> districts;
+    private Set<District> districts = new HashSet<>();
 
     protected SearchRequest() {
     }
 
     @JsonCreator
-    public SearchRequest(long id,
-                         String firstName,
-                         String lastName,
-                         String email,
-                         Double appartmentSize,
-                         Double appartmentRent,
-                         Set<District> districts) {
-        this.id = id;
+    public SearchRequest(@JsonProperty("firstName") String firstName,
+                         @JsonProperty("lastName") String lastName,
+                         @JsonProperty("email") String email,
+                         @JsonProperty("appartmentSize") Double appartmentSize,
+                         @JsonProperty("appartmentRent") Double appartmentRent,
+                         @JsonProperty("districts") Set<District> districts) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -65,28 +64,56 @@ public class SearchRequest implements Serializable {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Double getAppartmentSize() {
         return appartmentSize;
     }
 
+    public void setAppartmentSize(Double appartmentSize) {
+        this.appartmentSize = appartmentSize;
+    }
+
     public Double getAppartmentRent() {
         return appartmentRent;
     }
 
+    public void setAppartmentRent(Double appartmentRent) {
+        this.appartmentRent = appartmentRent;
+    }
+
     public Set<District> getDistricts() {
         return districts;
+    }
+
+    public void setDistricts(Set<District> districts) {
+        this.districts = districts;
     }
 
     @Override

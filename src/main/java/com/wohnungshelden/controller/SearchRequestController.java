@@ -15,11 +15,6 @@ public class SearchRequestController {
     @Autowired
     SearchRequestRepository repo;
 
-    @RequestMapping("/hello")
-    public String helloWorld() {
-        return "Hello world!";
-    }
-
     @GetMapping("/findAll")
     public List<SearchRequest> findAll() {
         List<SearchRequest> searchRequests = new ArrayList<>();
@@ -32,5 +27,10 @@ public class SearchRequestController {
 
         SearchRequest searchRequest= repo.findById(id).get();
         return searchRequest;
+    }
+
+    @PostMapping("/create")
+    public SearchRequest create(@RequestBody SearchRequest searchRequest) {
+        return repo.save(searchRequest);
     }
 }
