@@ -24,7 +24,6 @@ public class SearchRequestController {
     public List<SearchRequest> findAll() {
         List<SearchRequest> searchRequests = new ArrayList<>();
         this.repo.findAll().forEach(searchRequests::add);
-        System.out.println(searchRequests);
         return searchRequests;
     }
 
