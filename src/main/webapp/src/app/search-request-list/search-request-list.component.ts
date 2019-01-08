@@ -3,7 +3,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import { Observable } from 'rxjs';
 
 import { SearchRequestService } from '../search-request.service';
-import { SearchRequest } from '../search-request';
+import { SearchRequest } from '../dtos';
 
 @Component({
   selector: 'search-request-list',

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { SearchRequest, District } from './dtos';
 
 const httpOptions = {
 headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,14 +17,14 @@ export class SearchRequestService {
   constructor(private http: HttpClient) { }
 
   getSearchRequestList(): Observable<SearchRequest[]> {
-    return this.http.get(`${this.baseUrl}/findAll`);
+    return this.http.get<SearchRequest[]>(`${this.baseUrl}/findAll`);
   }
 
   create(searchRequest: SearchRequest): Observable<SearchRequest> {
-    return this.http.post(`${this.baseUrl}/create`, searchRequest, httpOptions);
+    return this.http.post<SearchRequest>(`${this.baseUrl}/create`, searchRequest, httpOptions);
   }
 
   getDistrictsList(): Observable<District[]> {
-    return this.http.get(`${this.baseUrl}/allDistricts`);
+    return this.http.get<District[]>(`${this.baseUrl}/allDistricts`);
   }
 }
