@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { SearchRequest, District } from './dtos';
 
 import { SearchRequestService } from './search-request.service';
@@ -17,6 +17,7 @@ const mockResponse = {
 
 describe('SearchRequestService', () => {
   let httpClient: HttpClientTestingModule;
+  let httpTestingController: HttpTestingController;
   let searchRequestService: SearchRequestService;
 
   beforeEach(() => {
