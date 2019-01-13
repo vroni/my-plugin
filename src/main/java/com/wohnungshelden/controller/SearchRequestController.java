@@ -22,13 +22,6 @@ public class SearchRequestController {
         return searchRequests;
     }
 
-    @GetMapping("/searchrequest/{id}")
-    public SearchRequest findById(@PathVariable Long id) {
-
-        SearchRequest searchRequest= repo.findById(id).get();
-        return searchRequest;
-    }
-
     @PostMapping("/create")
     public SearchRequest create(@RequestBody SearchRequest searchRequest) {
         return repo.save(searchRequest);

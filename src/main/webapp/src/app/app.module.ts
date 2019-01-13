@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatTableModule, MatSelectModule, MatInputModule, MatButtonModule, MatCardModule, MatDividerModule } from '@angular/material';
+import { MatTableModule, MatSelectModule, MatInputModule, MatButtonModule, MatCardModule, MatDividerModule, MatFormFieldModule } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -11,11 +11,6 @@ import { AppRoutingModule } from  './app.routing';
 import { SearchRequestCreateComponent } from './search-request-create/search-request-create.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchRequestListComponent,
-    SearchRequestCreateComponent
-  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -28,9 +23,25 @@ import { SearchRequestCreateComponent } from './search-request-create/search-req
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatFormFieldModule
+  ],
+  exports: [
+    MatTableModule,
+    MatSelectModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatFormFieldModule
+  ],
+  declarations: [
+    AppComponent,
+    SearchRequestListComponent,
+    SearchRequestCreateComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

@@ -39,6 +39,8 @@ export class SearchRequestCreateComponent implements OnInit {
                                           appartmentSize: appartmentSize,
                                           appartmentRent: appartmentRent,
                                           districts: this.selectedOptions}
+
+    // navigate to start page after saving new entry
     this.searchRequestService.create(searchRequest).subscribe(() =>
         this.router.navigate(['/']));
   }

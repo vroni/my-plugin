@@ -23,8 +23,7 @@ public class City implements Serializable {
 
     protected City() {}
 
-    public City(Long id, String name, Set<District> districts) {
-        this.id = id;
+    public City(String name, Set<District> districts) {
         this.name = name;
         this.districts = districts;
     }
